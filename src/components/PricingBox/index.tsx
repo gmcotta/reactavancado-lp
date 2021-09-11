@@ -4,22 +4,30 @@ import Button from 'components/Button'
 import { gaEvent } from 'utils/ga'
 
 import * as S from './styles'
+import { PricingBoxSectionProps } from 'types/api'
+
+type PricingBoxProps = {
+  pricingBox?: PricingBoxSectionProps
+}
 
 const onClick = () =>
   gaEvent({ action: 'click', category: 'buy', label: 'pricing box button' })
 
-const PricingBox = () => (
-  <S.Box>
-    <S.Prices>
-      <S.FullPrice>
-        De <span>R$549</span> por apenas
-      </S.FullPrice>
-      <S.DiscountPrice>
-        <span>6x de</span> R$49
-      </S.DiscountPrice>
-    </S.Prices>
-    <S.BenefitsList>
-      <S.BenefitsItem>
+const PricingBox = ({ pricingBox }: PricingBoxProps) => {
+  console.log(pricingBox)
+  return (
+    <S.Box>
+      <S.Prices>
+        <S.FullPrice>
+          De <span>R${pricingBox.totalPrice}</span> por apenas
+        </S.FullPrice>
+        <S.DiscountPrice>
+          <span>{pricingBox.installments}x de</span> R$
+          {pricingBox.installmentPrice}
+        </S.DiscountPrice>
+      </S.Prices>
+      <S.BenefitsList dangerouslySetInnerHTML={{ __html: pricingBox.benefits }}>
+        {/* <S.BenefitsItem>
         Acesso aos <strong>6 módulos</strong>
       </S.BenefitsItem>
 
@@ -33,21 +41,20 @@ const PricingBox = () => (
 
       <S.BenefitsItem>
         <strong>Lives exclusivas</strong> durante o curso
-      </S.BenefitsItem>
-    </S.BenefitsList>
+      </S.BenefitsItem> */}
+      </S.BenefitsList>
 
-    <Button
-      href="https://www.udemy.com/course/react-avancado/?couponCode=ULTIMACHANCE"
-      onClick={onClick}
-      withPrice
-    >
-      <p>Comprar o curso</p>
-      <div>
-        <S.ButtonFullPrice>R$549</S.ButtonFullPrice>
-        <S.ButtonDiscountPrice>R$299</S.ButtonDiscountPrice>
-      </div>
-    </Button>
-  </S.Box>
-)
+      <Button href={pricingBox.button.url} onClick={onClick} withPrice>
+        <p>{pricingBox.button.label}</p>
+        <div>
+          <S.ButtonFullPrice>R${pricingBox.totalPrice}</S.ButtonFullPrice>
+          <S.ButtonDiscountPrice>
+            R${pricingBox.installments * pricingBox.installmentPrice}
+          </S.ButtonDiscountPrice>
+        </div>
+      </Button>
+    </S.Box>
+  )
+}
 
 export default PricingBox
