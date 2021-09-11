@@ -86,7 +86,7 @@ const GET_LANDING_PAGE = /* GraphQL */ `
     }
   }
 
-  fragment aboutUsData on LandingPage {
+  fragment aboutUsSectionData on LandingPage {
     aboutUsSection {
       title
       authors {
@@ -104,6 +104,19 @@ const GET_LANDING_PAGE = /* GraphQL */ `
     }
   }
 
+  fragment reviewSectionData on LandingPage {
+    reviewSection {
+      title
+      reviews {
+        name
+        avatar {
+          ...imageData
+        }
+        review
+      }
+    }
+  }
+
   query GET_LANDING_PAGE {
     landingPage(id: 1) {
       ...logoData
@@ -114,7 +127,8 @@ const GET_LANDING_PAGE = /* GraphQL */ `
       ...modulesSectionData
       ...agendaSectionData
       ...pricingBoxData
-      ...aboutUsData
+      ...aboutUsSectionData
+      ...reviewSectionData
     }
   }
 `

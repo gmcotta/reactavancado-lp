@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import ResizeObserver from 'resize-observer-polyfill'
+import { getImageUrl } from 'utils/getImageUrl'
 
 import * as S from './styles'
 
@@ -31,19 +32,9 @@ const ReviewCard: React.FC<Props> = ({ id, name, image, description }) => {
     <S.Card>
       <S.User>
         <S.Image>
-          <source
-            srcSet={require(`@images/reviews/${image}?webp`)}
-            type="image/webp"
-          />
-          <source
-            srcSet={require(`@images/reviews/${image}`)}
-            type="image/jpg"
-          />
-          <img
-            src={require(`@images/reviews/${image}`)}
-            loading="lazy"
-            alt={name}
-          />
+          <source srcSet={getImageUrl(image)} type="image/webp" />
+          <source srcSet={getImageUrl(image)} type="image/jpg" />
+          <img src={getImageUrl(image)} loading="lazy" alt={name} />
         </S.Image>
         <S.Name>{name}</S.Name>
       </S.User>
