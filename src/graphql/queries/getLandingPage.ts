@@ -117,6 +117,16 @@ const GET_LANDING_PAGE = /* GraphQL */ `
     }
   }
 
+  fragment faqSectionData on LandingPage {
+    faqSection {
+      title
+      question {
+        title
+        answer
+      }
+    }
+  }
+
   query GET_LANDING_PAGE {
     landingPage(id: 1) {
       ...logoData
@@ -129,6 +139,7 @@ const GET_LANDING_PAGE = /* GraphQL */ `
       ...pricingBoxData
       ...aboutUsSectionData
       ...reviewSectionData
+      ...faqSectionData
     }
   }
 `
