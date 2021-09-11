@@ -111,4 +111,5 @@ export type LandingPageProps = {
   aboutUsSection: AboutUsSectionProps
   reviewSection: ReviewsSectionProps
   faqSection: FaqSectionProps
+  footer: string
 }
