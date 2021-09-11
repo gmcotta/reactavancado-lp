@@ -14,7 +14,6 @@ const onClick = () =>
   gaEvent({ action: 'click', category: 'buy', label: 'pricing box button' })
 
 const PricingBox = ({ pricingBox }: PricingBoxProps) => {
-  console.log(pricingBox)
   return (
     <S.Box>
       <S.Prices>
