@@ -46,12 +46,22 @@ const GET_LANDING_PAGE = /* GraphQL */ `
     }
   }
 
+  fragment conceptsSectionData on LandingPage {
+    conceptsSection {
+      title
+      conceptItem {
+        title
+      }
+    }
+  }
+
   query GET_LANDING_PAGE {
     landingPage(id: 1) {
       ...logoData
       ...headerData
       ...aboutSectionData
       ...techSectionData
+      ...conceptsSectionData
     }
   }
 `

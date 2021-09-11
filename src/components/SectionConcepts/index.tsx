@@ -5,14 +5,19 @@ import Heading from 'components/Heading'
 
 import content from './content'
 import * as S from './styles'
+import { ConceptsSectionProps } from 'types/api'
 
-const SectionConcepts = () => (
+type SectionConceptsProps = {
+  conceptsSection: ConceptsSectionProps
+}
+
+const SectionConcepts = ({ conceptsSection }: SectionConceptsProps) => (
   <Container>
     <S.Box>
-      <Heading lineBottom>Conceitos que você irá aprender</Heading>
+      <Heading lineBottom>{conceptsSection.title}</Heading>
       <S.List>
-        {content.map((item) => (
-          <S.Item key={item}>{item}</S.Item>
+        {conceptsSection.conceptItem.map((item) => (
+          <S.Item key={item.title}>{item.title}</S.Item>
         ))}
       </S.List>
     </S.Box>
