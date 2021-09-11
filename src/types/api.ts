@@ -24,8 +24,17 @@ export type AboutSectionProps = {
   media: ImageProps
 }
 
+export type TechSectionProps = {
+  title: string
+  techIcons: {
+    icon: ImageProps
+    title: string
+  }[]
+}
+
 export type LandingPageProps = {
   logo: LogoProps
   header: HeaderProps
   aboutSection: AboutSectionProps
+  techSection: TechSectionProps
 }
