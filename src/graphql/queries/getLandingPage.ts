@@ -66,6 +66,13 @@ const GET_LANDING_PAGE = /* GraphQL */ `
     }
   }
 
+  fragment agendaSectionData on LandingPage {
+    agendaSection {
+      title
+      description
+    }
+  }
+
   query GET_LANDING_PAGE {
     landingPage(id: 1) {
       ...logoData
@@ -74,6 +81,7 @@ const GET_LANDING_PAGE = /* GraphQL */ `
       ...techSectionData
       ...conceptsSectionData
       ...modulesSectionData
+      ...agendaSectionData
     }
   }
 `

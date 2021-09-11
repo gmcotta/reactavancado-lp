@@ -4,21 +4,15 @@ import Container from 'components/Container'
 import Heading from 'components/Heading'
 
 import * as S from './styles'
+import { AgendaSectionProps } from 'types/api'
 
-const SectionAgenda = () => (
+type SectionAgendaProps = {
+  agendaSection: AgendaSectionProps
+}
+const SectionAgenda = ({ agendaSection }: SectionAgendaProps) => (
   <Container id="agenda">
-    <Heading reverseColor>Curso 100% completo!</Heading>
-    <S.Text>
-      <p>
-        Todos os módulos do curso <strong>já foram lançados</strong>! E você
-        pode assistir todos no seu tempo, pois o acesso é vitalício.
-      </p>
-
-      <p>
-        Os módulos podem ser feitos em ordem ou você pode assistir conforme sua
-        necessidade.
-      </p>
-    </S.Text>
+    <Heading reverseColor>{agendaSection.title}</Heading>
+    <S.Text dangerouslySetInnerHTML={{ __html: agendaSection.description }} />
   </Container>
 )
 

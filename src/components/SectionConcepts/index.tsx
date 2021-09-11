@@ -3,7 +3,6 @@ import React from 'react'
 import Container from 'components/Container'
 import Heading from 'components/Heading'
 
-import content from './content'
 import * as S from './styles'
 import { ConceptsSectionProps } from 'types/api'
 
